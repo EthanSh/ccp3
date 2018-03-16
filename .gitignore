@@ -1,0 +1,10 @@
+.cache
+.npm
+.bashrc
+.bash_logout
+.gitconfig
+.profile
+.bash_history
+.rpmdb/
+.viminfo
+.ssh
