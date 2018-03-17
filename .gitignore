@@ -1,3 +1,4 @@
+.idea
 .cache
 .npm
 .bashrc
@@ -8,3 +9,8 @@
 .rpmdb/
 .viminfo
 .ssh
+.DS_Store
+Project3_2/.DS_Store
+Project3_2/target
+Project3_2/users.csv
+
