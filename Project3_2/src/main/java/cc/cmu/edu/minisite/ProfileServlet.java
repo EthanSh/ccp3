@@ -18,7 +18,7 @@ public class ProfileServlet extends HttpServlet {
 
     // JDBC driver name and database URL
     static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
-    static final String DB_URL = "jdbc:mysql://ccp3.cwyuuwgo8ukt.us-east-1.rds.amazonaws.com/user";
+    static final String DB_URL = "jdbc:mysql://ccp3.cwyuuwgo8ukt.us-east-1.rds.amazonaws.com/user?characterEncoding=utf8";
 
     //  Database credentials
     static final String USER = "xingches";
@@ -55,7 +55,6 @@ public class ProfileServlet extends HttpServlet {
             throws ServletException, IOException {
 
 
-
         JSONObject result = new JSONObject();
         /*
             PreparedStatement leads to fast execution and helps prevent 
@@ -66,6 +65,8 @@ public class ProfileServlet extends HttpServlet {
         */
         String name = request.getParameter("id");
         String pwd = request.getParameter("pwd");
+        System.out.println("get request from"+name);
+
         String query = "SELECT * FROM username WHERE username=" + name;
 //        String query = "SELECT * FROM username WHERE username=" + name + " AND password="+ pwd;
 
@@ -74,31 +75,16 @@ public class ProfileServlet extends HttpServlet {
             rs.next();
             String username = rs.getString("username");
             String profile = rs.getString("avatar");
+
             result.put("name", username);
             result.put("profile", profile);
-            //STEP 6: Clean-up environment
-            rs.close();
-//            stmt.close();
-//            conn.close();
         }catch(SQLException se){
             //Handle errors for JDBC
             se.printStackTrace();
         }catch (Exception exc){
             exc.printStackTrace();
-        }finally {
-//            try{
-//                if(stmt!=null)
-//                    stmt.close();
-//            }catch(SQLException se2){
-//            }// nothing we can do
-//            try{
-//                if(conn!=null)
-//                    conn.close();
-//            }catch(SQLException se){
-//                se.printStackTrace();
-//            }//end finally try
         }
-
+        System.out.println("get request out"+result.toString());
 
         /*
             Task 1:

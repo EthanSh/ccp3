@@ -13,4 +13,6 @@
 Project3_2/.DS_Store
 Project3_2/target
 Project3_2/users.csv
+node_modules
+package-lock.json
 
